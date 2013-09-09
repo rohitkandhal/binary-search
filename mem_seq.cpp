@@ -1,9 +1,10 @@
+//In Memory Sequential Search
+
 #include <windows.h>
 #include <iostream>
 #include <fstream>
 
 using std::ifstream;
-using std::ofstream;	// To print output to a text file.
 using std::ios;
 using std::cout;
 
@@ -16,7 +17,6 @@ int main( int argc, char *argv[] )
   SYSTEMTIME  end;		// End Time
 
   ifstream    fp;       // Input file stream
-  ofstream	  op;
   
   int         val;      // Current input value
   int		  i,j;		// Index variables
@@ -61,8 +61,6 @@ int main( int argc, char *argv[] )
 	  fp.read( (char *) &val, (int) sizeof(int));
   }
 
-  fp.close();
-
   // ****************************************** Check if key exists**********************************************
 
   for(i = 0; i < 10000; i++)
@@ -70,6 +68,8 @@ int main( int argc, char *argv[] )
 	  temp = s[i];
 
 	  j = 0;
+	  hit[i] = 0;
+
 	  while(j < 5000)
 	  {
 		  if(temp == k[j++])
@@ -77,15 +77,12 @@ int main( int argc, char *argv[] )
 			  hit[i] = 1;
 			  break;
 		  }
-		  else
-		  {
-			  hit[i] = 0;
-		  }
 	  }
   }
 
   GetLocalTime( &end );
 
+  fp.close();
   // ************************************** Print Output **************************************************
 
   printf( "%02d:%02d:%02d:%06d\n", beg.wHour,

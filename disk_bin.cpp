@@ -59,8 +59,7 @@ int main( int argc, char *argv[] )
 	  hit[i] = 0;
 
 	  kfirst = 0;
-	  klast = 4999;		// Special Note: if you set it to 5000 then fp read will go out of bound
-						// and program won't run
+	  klast = 4999;		
 	  
 	  //printf("\n******************************\n");
 	  while(kfirst <= klast)
@@ -91,9 +90,9 @@ int main( int argc, char *argv[] )
 	  }
   }
 
-  fp.close();
-
   GetLocalTime( &end );
+
+  fp.close();
 
   // ************************************** Print Output **************************************************
 

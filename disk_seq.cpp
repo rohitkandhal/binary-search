@@ -75,9 +75,10 @@ int main( int argc, char *argv[] )
 	  }
   }
 
-  fp.close();
-
   GetLocalTime( &end );
+
+  // Time taken to close file stream should not be included in comparison.
+  fp.close();
 
   // ************************************** Print Output **************************************************
 

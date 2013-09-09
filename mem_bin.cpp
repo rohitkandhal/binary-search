@@ -1,9 +1,10 @@
+// In Memory Binary Search
+
 #include <windows.h>
 #include <iostream>
 #include <fstream>
 
 using std::ifstream;
-using std::ofstream;	// To print output to a text file.
 using std::ios;
 using std::cout;
 
@@ -16,7 +17,6 @@ int main( int argc, char *argv[] )
   SYSTEMTIME  end;		// End Time
 
   ifstream    fp;       // Input file stream
-  ofstream	  op;
   
   int         val;      // Current input value
   int		  i, kfirst, kmid, klast;		// Index variables for keys
@@ -47,6 +47,7 @@ int main( int argc, char *argv[] )
   // ****************************************************************************************
   i = 0;
   // You must record how much time it takes to open and load key.pc.db, and to then determine the presence or absence of each si.
+  
   GetLocalTime( &beg );
 
   // Copy Keys values from database to k[5000] array
@@ -54,17 +55,14 @@ int main( int argc, char *argv[] )
 
   fp.read( (char *) &val, (int) sizeof(int));
 
-  while( !fp.eof())
+  while(!fp.eof())
   {
 	  k[i++] = val;
 	  fp.read( (char *) &val, (int) sizeof(int));
   }
-
-  fp.close();
-
+  
   // ****************************************** Check if key exists**********************************************
 
-  
   // Loop through all seek keys
   for(i = 0; i < 10000; i++)
   {
@@ -73,8 +71,8 @@ int main( int argc, char *argv[] )
 	  // Initially set hit to false, if element found then set it to true.
 	  hit[i] = 0;
 
-	    kfirst = 0;
-		klast = 4999;
+	  kfirst = 0;
+	  klast = 4999;
 
 	  while(kfirst <= klast)
 	  {
@@ -92,7 +90,7 @@ int main( int argc, char *argv[] )
 		  }
 		  else
 		  {
-				// Found the element
+			  // Found the element
 			  hit[i] = 1;
 			  break;
 		  }
@@ -100,6 +98,9 @@ int main( int argc, char *argv[] )
   }
 
   GetLocalTime( &end );
+
+  // Time taken to close file stream should not be inlcuded in comparison.
+  fp.close();
 
   // ************************************** Print Output **************************************************
 
