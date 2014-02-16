@@ -14,13 +14,13 @@ using std::cout;
 int main( int argc, char *argv[] )
 {
   SYSTEMTIME  beg;      // Start time
-  SYSTEMTIME  end;		// End Time
+  SYSTEMTIME  end;	// End Time
 
   ifstream    fp;       // Input file stream
   
-  int         val;      // Current input value
-  int		  i, kfirst, kmid, klast;		// Index variables for keys
-  int		  key;		// temporary variable
+  int   val;      // Current input value
+  int	i, kfirst, kmid, klast;		// Index variables for keys
+  int	key;		// temporary variable
 
   int k[5000];	// Key array
   int s[10000];	// Seek array
@@ -46,7 +46,8 @@ int main( int argc, char *argv[] )
 
   // ****************************************************************************************
   i = 0;
-  // You must record how much time it takes to open and load key.pc.db, and to then determine the presence or absence of each si.
+  // You must record how much time it takes to open and load key.pc.db, and to then determine
+  //  the presence or absence of each si.
   
   GetLocalTime( &beg );
 
@@ -99,7 +100,6 @@ int main( int argc, char *argv[] )
 
   GetLocalTime( &end );
 
-  // Time taken to close file stream should not be inlcuded in comparison.
   fp.close();
 
   // ************************************** Print Output **************************************************
