@@ -3,7 +3,7 @@
 #include <fstream>
 
 using std::ifstream;
-using std::ofstream;	// To print output to a text file.
+using std::ofstream;	
 using std::ios;
 using std::cout;
 
@@ -13,20 +13,18 @@ using std::cout;
 int main( int argc, char *argv[] )
 {
   SYSTEMTIME  beg;      // Start time
-  SYSTEMTIME  end;		// End Time
+  SYSTEMTIME  end;	// End Time
 
-  ifstream    fp;       // Input file stream
-  ofstream	  op;
+  ifstrea	fp;       // Input file stream
+  ofstream	op;
   
   int         val;      // Current input value
   int		  i,j;		// Index variables
   int		  temp;		// temporary variable
 
-  int s[10000];	// Seek array
+  int s[10000];		// Seek array
   int hit[10000];	// Hit array
 
-  // ****************************************************************************************
-  
   // Open file. IN: Open for reading, Binary: Operations in binary mode rather than text.
   fp.open( "seek.pc.db", ios::in | ios::binary );
 
@@ -52,19 +50,14 @@ int main( int argc, char *argv[] )
   for(i = 0; i < 10000; i++)
   {
 	  temp = s[i];
-
 	  j = 0;
-
 	  hit[i] = 0;
 
 	  while(j < 5000)
 	  {
 		  // seekg: Sets the position of the next character to be extracted from the input stream.
 		  fp.seekg( j *(int) sizeof( int ), ios::beg );
-		  //printf( "seekg( %d INT, begin ), pos=%d\n",i, (int) fp.tellg() );
 		  fp.read( (char *) &val, (int) sizeof(int));
-		  //printf( "val=%d\n\n", val );
-
 		  j++;
 
 		  if(temp == val)
