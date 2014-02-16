@@ -13,15 +13,15 @@ using std::cout;
 int main( int argc, char *argv[] )
 {
   SYSTEMTIME  beg;      // Start time
-  SYSTEMTIME  end;		// End Time
+  SYSTEMTIME  end;	// End Time
 
   ifstream    fp;       // Input file stream
   
-  int         val;      // Current input value
-  int		  i, kfirst, kmid, klast;		// Index variables for keys
-  int		  key;		// temporary variable
+  int   val;      // Current input value
+  int	i, kfirst, kmid, klast;		// Index variables for keys
+  int	key;		// temporary variable
 
-  int s[10000];	// Seek array
+  int s[10000];		// Seek array
   int hit[10000];	// Hit array
 
   // ****************************************************************************************
@@ -61,7 +61,6 @@ int main( int argc, char *argv[] )
 	  kfirst = 0;
 	  klast = 4999;		
 	  
-	  //printf("\n******************************\n");
 	  while(kfirst <= klast)
 	  {
 		  kmid = (kfirst + klast)/2;
@@ -70,7 +69,6 @@ int main( int argc, char *argv[] )
 		  fp.seekg( kmid *(int) sizeof( int ), ios::beg );
 		  fp.read( (char *) &val, (int) sizeof(int));
 		  
-		  // printf("\n\t%d-%d-%d: %d\t", kfirst, kmid,klast, val);
 		  if(val < key)
 		  {
 			  // Search Right side of array
